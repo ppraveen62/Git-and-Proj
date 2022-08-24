@@ -1,0 +1,377 @@
+step-1: master branch as production branch doing 1st commit
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/branching_model/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ touch log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ echo "1st commit- production" >> log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git add .
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git commit -m "1st commit"
+[master (root-commit) cf59642] 1st commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 log.txt
+
+step-2: creating integration and hot fix branch in master branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git branch integration
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git branch hot_fix
+
+step-3: creating 2nd commit in master branch
+
+ BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git add .
+warning: in the working copy of 'log.txt', LF will be replaced by CRLF the next time Git touches it
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git commit -m "2nd commit"
+[master 6ac4391] 2nd commit
+ 1 file changed, 1 insertion(+)
+
+step-4: creating 1st commit in hotfix branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git checkout hot_fix
+Switched to branch 'hot_fix'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git commit -m "hf 1st commit"
+[hot_fix 7e16c06] hf 1st commit
+ 1 file changed, 1 insertion(+)
+
+step-5: creating branches in integration branch which are feature1 and feature2
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git checkout integration
+Switched to branch 'integration'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git branch feature1
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git branch feature2
+
+step-6: creating 3 commits in feature2 branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git checkout feature2
+Switched to branch 'feature2'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git commit -m "f2 1st commit"
+[feature2 03a5dfa] f2 1st commit
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git commit -m "f2 2nd commit"
+[feature2 c12f693] f2 2nd commit
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git commit -m "f2 3rd commit"
+[feature2 d47c13e] f2 3rd commit
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git log --oneline
+d47c13e (HEAD -> feature2) f2 3rd commit
+c12f693 f2 2nd commit
+03a5dfa f2 1st commit
+cf59642 (integration, feature1) 1st commit
+
+step-7: merge feature2 branch in integration creating commit 2
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature2)
+$ git checkout integration
+Switched to branch 'integration'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git merge feature2
+Updating cf59642..d47c13e
+Fast-forward
+ log.txt | 3 +++
+ 1 file changed, 3 insertions(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ cat log.txt
+1st commit- production
+1st commit- feature2
+2nd commit- feature2
+3rd commit- feature2
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git log --oneline
+d47c13e (HEAD -> integration, feature2) f2 3rd commit
+c12f693 f2 2nd commit
+03a5dfa f2 1st commit
+cf59642 (feature1) 1st commit
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git status
+On branch integration
+nothing to commit, working tree clean
+
+step-8: have 3 commits in feature1 branch and rebase it from integration branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git rebase integration
+Successfully rebased and updated refs/heads/feature1.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git log --oneline
+d47c13e (HEAD -> feature1, integration, feature2) f2 3rd commit
+c12f693 f2 2nd commit
+03a5dfa f2 1st commit
+cf59642 1st commit
+
+step-9: merge integration branch into hot fix banch and production (master) branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git rebase integration
+Successfully rebased and updated refs/heads/feature1.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git log --oneline
+d47c13e (HEAD -> feature1, integration, feature2) f2 3rd commit
+c12f693 f2 2nd commit
+03a5dfa f2 1st commit
+cf59642 1st commit
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git checkout hot_fix
+Switched to branch 'hot_fix'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git merge integration
+Auto-merging log.txt
+CONFLICT (content): Merge conflict in log.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ git commit -m "manually merged"
+[hot_fix 31e1bd0] manually merged
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git checkout production
+error: pathspec 'production' did not match any file(s) known to git
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git merge integration
+Auto-merging log.txt
+CONFLICT (content): Merge conflict in log.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ git commit -m "manually merged"
+[master 93d6669] manually merged
+
+step-10: make a commit in feature1 branch and merge that into integration  hotfix and production (master) branch
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git checkout feature1
+Switched to branch 'feature1'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git commit -m "f1 last commit"
+[feature1 e2df1a9] f1 last commit
+ 1 file changed, 1 insertion(+)
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (feature1)
+$ git checkout integration
+Switched to branch 'integration'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git merge feature1
+Updating d47c13e..e2df1a9
+Fast-forward
+ log.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git checkout hot_fix
+Switched to branch 'hot_fix'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git merge feature1
+Auto-merging log.txt
+hint: Waiting for your editor to close the file... 'C:\Program Files\Sublime Text  3\Sublime_Text.exe' -w: C:\Program Files\Sublime Text  3\Sublime_Text.exe: No such file or directory
+error: There was a problem with the editor ''C:\Program Files\Sublime Text  3\Sublime_Text.exe' -w'.
+Not committing merge; use 'git commit' to complete the merge.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ cat log.txt
+1st commit- production
+1st commit- hotfix
+1st commit- feature2
+2nd commit- feature2
+3rd commit- feature2
+last commit- feature1
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix|MERGING)
+$ git commit -m "merged"
+[hot_fix 6409c53] merged
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git merge feature1
+Auto-merging log.txt
+hint: Waiting for your editor to close the file... 'C:\Program Files\Sublime Text  3\Sublime_Text.exe' -w: C:\Program Files\Sublime Text  3\Sublime_Text.exe: No such file or directory
+error: There was a problem with the editor ''C:\Program Files\Sublime Text  3\Sublime_Text.exe' -w'.
+Not committing merge; use 'git commit' to complete the merge.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ cat log.txt
+1st commit- production
+2nd commit production
+1st commit- feature2
+2nd commit- feature2
+3rd commit- feature2
+last commit- feature1
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ git commit -m "merged"
+[master 16f335a] merged
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git log --oneline
+16f335a (HEAD -> master) merged
+e2df1a9 (integration, feature1) f1 last commit
+93d6669 manually merged
+d47c13e (feature2) f2 3rd commit
+c12f693 f2 2nd commit
+03a5dfa f2 1st commit
+6ac4391 2nd commit
+cf59642 1st commit
+
+step-11: create a commit in hot fix branch and merge it into integration branch and production(master) branch
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git checkout hot_fix
+Switched to branch 'hot_fix'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git commit -m "hf lastcommit"
+[hot_fix 2a7cf92] hf lastcommit
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (hot_fix)
+$ git checkout integration
+Switched to branch 'integration'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git merge hot_fix
+Updating e2df1a9..2a7cf92
+Fast-forward
+ log.txt | 2 ++
+ 1 file changed, 2 insertions(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (integration)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master)
+$ git merge hot_fix
+Auto-merging log.txt
+CONFLICT (content): Merge conflict in log.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ vi log.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/branching_model (master|MERGING)
+$ git commit -m "manually merged"
+[master 38d1b89] manually merged
+
+
+
+
+
+
+
+
+
+
+
+

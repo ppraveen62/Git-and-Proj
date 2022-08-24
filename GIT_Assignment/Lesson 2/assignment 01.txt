@@ -1,0 +1,65 @@
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/hi/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+
+No commits yet
+
+nothing to commit (create/copy files and use "git add" to track)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch abc.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        abc.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   abc.txt
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git ls-files --stage
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       abc.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git reset abc.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git ls-files --stage
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        abc.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)

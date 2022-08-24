@@ -1,0 +1,175 @@
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/hike/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git commit -m "files added"
+[master (root-commit) 4c3d3c1] files added
+ 2 files changed, 126 insertions(+)
+ create mode 100644 cloud.txt
+ create mode 100644 tic tac toe.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git branch
+* master
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git branch featureone
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git branch
+  featureone
+* master
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git checkout featureone
+Switched to branch 'featureone'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git checkout master
+Switched to branch 'master'
+M       cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git checkout featureone
+Switched to branch 'featureone'
+M       cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ cat cloud.txt
+iam a good boy.
+i will behave well.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git add .
+warning: in the working copy of 'cloud.txt', LF will be replaced by CRLF the next time Git touches it
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git commit -m
+error: switch `m' requires a value
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git commit -m "new lines added"
+[featureone df71635] new lines added
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ cat cloud.txt
+iam a good boy
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git diff master..featureone
+diff --git a/cloud.txt b/cloud.txt
+index 36a793e..769d860 100644
+--- a/cloud.txt
++++ b/cloud.txt
+@@ -1 +1,2 @@
+-iam a good boy
+\ No newline at end of file
++iam a good boy.
++i will behave well.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git merge featureone
+Updating 4c3d3c1..df71635
+Fast-forward
+ cloud.txt | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git status
+On branch master
+nothing to commit, working tree clean
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git commit -m "worddeleted"
+[master d453670] worddeleted
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git checkout featureone
+Switched to branch 'featureone'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git merge master
+Updating df71635..d453670
+Fast-forward
+ cloud.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ vi cloud,txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git checkout master
+Switched to branch 'master'
+M       cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git checkout featureone
+Switched to branch 'featureone'
+M       cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git commit -m "add"
+[featureone e0b05ab] add
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (featureone)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git commit "done"
+error: pathspec 'done' did not match any file(s) known to git
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git commit -m "done"
+[master d013540] done
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$ git merge featureone
+Auto-merging cloud.txt
+CONFLICT (content): Merge conflict in cloud.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master|MERGING)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master|MERGING)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master|MERGING)
+$ git commit -m "merged"
+[master 12fc1a9] merged
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hike (master)
+$

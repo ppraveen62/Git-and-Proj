@@ -1,0 +1,63 @@
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/hi/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch a.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch b.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git commit -m "added"
+[master (root-commit) 5d49d55] added
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 a.txt
+ create mode 100644 b.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git rm a.txt
+rm 'a.txt'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    a.txt
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git rm --cached b.txt
+rm 'b.txt'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git ls-files --stage
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ ls-lrt
+bash: ls-lrt: command not found
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ ls -lrt
+total 0
+-rw-r--r-- 1 BALA 197121 0 Aug  1 12:42 b.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git status
+On branch master
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        deleted:    a.txt
+        deleted:    b.txt
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        b.txt
+
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)

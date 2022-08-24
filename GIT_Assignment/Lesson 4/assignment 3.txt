@@ -1,0 +1,130 @@
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/kick/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git commit -m "files added"
+[master (root-commit) cf2f6a1] files added
+ 2 files changed, 127 insertions(+)
+ create mode 100644 cloud.txt
+ create mode 100644 tic tac toe.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git branch
+* master
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git barnch source
+git: 'barnch' is not a git command. See 'git --help'.
+
+The most similar command is
+        branch
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git branch source
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git checkout source
+Switched to branch 'source'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git commit -m "mam added to line 1"
+[source 49f7513] mam added to line 1
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ vi cloud.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git status
+On branch source
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   cloud.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git stash
+Saved working directory and index state WIP on source: 49f7513 mam added to line 1
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git checkout master
+Switched to branch 'master'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git branch subsource
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (master)
+$ git checkout subsource
+Switched to branch 'subsource'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git satsh apply
+git: 'satsh' is not a git command. See 'git --help'.
+
+The most similar command is
+        stash
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git stash apply
+Auto-merging cloud.txt
+On branch subsource
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   cloud.txt
+
+no changes added to commit (use "git add" and/or "git commit -a")
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git log --oneline
+cf2f6a1 (HEAD -> subsource, master) files added
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git checkout source
+error: Your local changes to the following files would be overwritten by checkout:
+        cloud.txt
+Please commit your changes or stash them before you switch branches.
+Aborting
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git commit -m "stashed"
+[subsource 941ace5] stashed
+ 1 file changed, 1 insertion(+)
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (subsource)
+$ git checkout source
+Switched to branch 'source'
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git commit -m "new line added"
+On branch source
+nothing to commit, working tree clean
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git stash list
+stash@{0}: WIP on source: 49f7513 mam added to line 1
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git stash clear
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/kick (source)
+$ git stash list

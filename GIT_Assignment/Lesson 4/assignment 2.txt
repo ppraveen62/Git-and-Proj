@@ -1,0 +1,22 @@
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop
+$ git clone https://github.com/ppraveen62/hi2.git
+Cloning into 'hi2'...
+remote: Enumerating objects: 19, done.
+remote: Counting objects: 100% (19/19), done.
+remote: Compressing objects: 100% (15/15), done.
+remote: Total 19 (delta 0), reused 4 (delta 0), pack-reused 0
+Receiving objects: 100% (19/19), done.
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop
+$ cd hi2
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi2 (main)
+$ git log --oneline
+42c55c3 (HEAD -> main, origin/main, origin/HEAD) added key
+c08bb2c addded hwllo
+b9590fd hi
+52a7cbe new
+3ac3094 added
+6951641 intial
+

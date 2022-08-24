@@ -1,0 +1,93 @@
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi
+$ git init
+Initialized empty Git repository in C:/Users/BALA/Desktop/hi/.git/
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch idex.html
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch him.html
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add.
+git: 'add.' is not a git command. See 'git --help'.
+
+The most similar command is
+        add
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add .
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git commit -m "first commit"
+[master (root-commit) 28007bc] first commit
+ 2 files changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 him.html
+ create mode 100644 idex.html
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git config --global user.name "akhil"
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git config --global user.email "akhil123@gmail.com"
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git commit -m "second commit"
+On branch master
+nothing to commit, working tree clean
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch new.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ echo "hi" >>new.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch welcome.pptx
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add .
+warning: in the working copy of 'new.txt', LF will be replaced by CRLF the next time Git touches it
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git commit -m "third commit"
+[master a5406e2] third commit
+ 2 files changed, 1 insertion(+)
+ create mode 100644 new.txt
+ create mode 100644 welcome.pptx
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git log
+commit a5406e2c4a20f6b8bb6bbf8dcdddceb043ed1f74 (HEAD -> master)
+Author: akhil <akhil123@gmail.com>
+Date:   Mon Aug 1 13:13:10 2022 +0530
+
+    third commit
+
+commit 28007bc1bd45ba1b0e84fd4e85863dc9d5ee194f
+Author: John Doe <johndoe@example.com>
+Date:   Mon Aug 1 13:07:28 2022 +0530
+
+    first commit
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ vi .gitignore
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch a.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ touch b.txt
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git add .
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+
+BALA@COMMERCIAL-LAP MINGW64 ~/Desktop/hi (master)
+$ git ls-files --stage
+100644 e1c096c869516de78f6b26b0cf8908c62dbae114 0       .gitignore
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       him.html
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       idex.html
+100644 45b983be36b73c0788dc9cbcb76cbb80fc7bb057 0       new.txt
+100644 e69de29bb2d1d6434b8b29ae775ad8c2e48c5391 0       welcome.pptx
